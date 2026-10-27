@@ -159,7 +159,7 @@ main {
   background: #fff;
 }
 
-/* Same width as the hero, with the thumbnails justified across it. */
+/* Same width as the hero, with the thumbnails centred in it. */
 .gallery {
   width: var(--hero-width);
   margin-top: 22px;
@@ -170,7 +170,7 @@ main {
 
 .gallery-list {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 14px;
   margin: 0;
   padding: 0;
