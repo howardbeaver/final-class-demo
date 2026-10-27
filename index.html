@@ -22,8 +22,9 @@
 
   <main>
     <section class="hero" aria-label="Now playing">
-      <video id="hero-video" muted playsinline preload="metadata"
+      <video id="hero-video" muted playsinline preload="auto" aria-label="Video player"
              poster="posters/sue-vid1-frame.jpg" src="video/sue-vid1.mp4"></video>
+      <p id="now-playing" class="visually-hidden" aria-live="polite"></p>
     </section>
 
     <section class="gallery" aria-label="Videos">

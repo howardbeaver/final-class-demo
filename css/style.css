@@ -6,6 +6,7 @@
   --navy-strip: #143055;  /* thumbnail strip */
   --logo: #0b1e3b;
   --ink: #191a2e;         /* nav and footer text */
+  --sky: #8fd0f2;         /* playing-thumbnail highlight */
   --glass: rgba(255, 255, 255, 0.62);  /* header and footer bars */
   --bar-height: 68px;
   --hero-width: 656px;
@@ -139,6 +140,29 @@ main {
 .thumb img {
   width: 143px;
   height: 105px;
+}
+
+.thumb:hover img {
+  opacity: 0.85;
+}
+
+.thumb[aria-current="true"] {
+  box-shadow: 0 0 0 3px var(--sky);
+}
+
+/* White, outside the highlight, so focus shows on the navy strip. */
+.thumb:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* Footer */
