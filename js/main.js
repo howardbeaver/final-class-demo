@@ -48,6 +48,43 @@ if (!reduceMotion.matches) {
   play();
 }
 
+// Phone menu (600px and below): the hamburger shows and hides the nav.
+// The CSS opens the dropdown from aria-expanded, so that's the only state.
+const menuToggle = document.querySelector('.menu-toggle');
+const siteNav = document.getElementById('site-nav');
+
+function menuOpen() {
+  return menuToggle.getAttribute('aria-expanded') === 'true';
+}
+
+function setMenu(open) {
+  menuToggle.setAttribute('aria-expanded', String(open));
+}
+
+menuToggle.addEventListener('click', () => setMenu(!menuOpen()));
+
+// Close on a link click, a click outside the header, Escape, or widening past the breakpoint.
+siteNav.addEventListener('click', (event) => {
+  if (event.target.closest('a')) {
+    setMenu(false);
+  }
+});
+
+document.addEventListener('click', (event) => {
+  if (menuOpen() && !event.target.closest('.site-header')) {
+    setMenu(false);
+  }
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && menuOpen()) {
+    setMenu(false);
+    menuToggle.focus();
+  }
+});
+
+window.matchMedia('(min-width: 601px)').addEventListener('change', () => setMenu(false));
+
 // Fetch the other starting frames once the page is up, so switching never shows a blank player.
 window.addEventListener('load', () => {
   for (const t of thumbs) {

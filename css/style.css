@@ -10,6 +10,7 @@
   --glass: rgba(255, 255, 255, 0.62);  /* header and footer bars */
   --bar-height: 68px;
   --hero-width: 656px;
+  --gutter: 16px;         /* minimum side space on small screens */
 }
 
 *,
@@ -21,6 +22,7 @@
 body {
   margin: 0;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   font-family: Helvetica, Arial, sans-serif;
@@ -65,7 +67,8 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 132px 0 46px;
+  /* 46px and 132px at the mockup's 1200px width, shrinking on narrower screens. */
+  padding: 0 clamp(var(--gutter), 11vw, 132px) 0 clamp(var(--gutter), 3.83vw, 46px);
   background: var(--glass);
 }
 
@@ -89,6 +92,48 @@ button:focus-visible {
   font-size: 18px;
 }
 
+/* Hamburger button: shown only at 600px and below. */
+.menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.menu-bars,
+.menu-bars::before,
+.menu-bars::after {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: currentColor;
+}
+
+.menu-bars {
+  position: relative;
+}
+
+.menu-bars::before,
+.menu-bars::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.menu-bars::before {
+  top: -7px;
+}
+
+.menu-bars::after {
+  top: 7px;
+}
+
 /* Hero and thumbnail strip */
 
 main {
@@ -96,7 +141,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 0 17px;
+  padding: 20px var(--gutter) 17px;
 }
 
 .hero {
@@ -114,7 +159,9 @@ main {
   background: #fff;
 }
 
+/* Same width as the hero, with the thumbnails justified across it. */
 .gallery {
+  width: var(--hero-width);
   margin-top: 22px;
   max-width: 100%;
   padding: 7px 16px;
@@ -123,14 +170,21 @@ main {
 
 .gallery-list {
   display: flex;
+  justify-content: space-between;
   gap: 14px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+/* 143px wide on desktop; the three shrink together when the strip is narrower. */
+.gallery-list li {
+  flex: 0 1 143px;
+}
+
 .thumb {
   display: block;
+  width: 100%;
   padding: 0;
   border: 0;
   background: none;
@@ -138,8 +192,9 @@ main {
 }
 
 .thumb img {
-  width: 143px;
-  height: 105px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 143 / 105;
 }
 
 .thumb:hover img {
@@ -168,14 +223,59 @@ main {
 /* Footer */
 
 .site-footer {
-  height: var(--bar-height);
+  min-height: var(--bar-height);
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 var(--gutter);
   background: var(--glass);
   font-size: 14px;
+  text-align: center;
 }
 
 .site-footer p {
   margin: 0;
+}
+
+/* Phones: the nav collapses behind the hamburger into a dropdown under the header. */
+@media (max-width: 600px) {
+  .site-header {
+    position: relative;
+    padding: 0 8px 0 var(--gutter);
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background: var(--glass);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .menu-toggle[aria-expanded="true"] + .site-nav {
+    display: block;
+  }
+
+  .site-nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .site-nav a {
+    display: block;
+    padding: 12px var(--gutter);
+  }
+
+  .site-nav a:focus-visible {
+    outline-offset: -3px;
+  }
 }
