@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MyVideoPlayer</title>
+  <meta name="description" content="A portfolio of my video work.">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="./">MyVideoPlayer</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Now playing">
+      <video id="hero-video" muted playsinline preload="metadata"
+             poster="posters/sue-vid1-frame.jpg" src="video/sue-vid1.mp4"></video>
+    </section>
+
+    <section class="gallery" aria-label="Videos">
+      <ul class="gallery-list">
+        <li>
+          <button type="button" class="thumb" data-video="video/sue-vid1.mp4"
+                  data-poster="posters/sue-vid1-frame.jpg">
+            <img src="posters/sue-vid1-thumb.png" width="143" height="105" alt="Video 1">
+          </button>
+        </li>
+        <li>
+          <button type="button" class="thumb" data-video="video/sue-vid2.mp4"
+                  data-poster="posters/sue-vid2-frame.jpg">
+            <img src="posters/sue-vid2-thumb.png" width="143" height="105" alt="Video 2">
+          </button>
+        </li>
+        <li>
+          <button type="button" class="thumb" data-video="video/sue-vid3.mp4"
+                  data-poster="posters/sue-vid3-frame.jpg">
+            <img src="posters/sue-vid3-thumb.png" width="143" height="105" alt="Video 3">
+          </button>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><a href="#">My Contact Information</a> – <a href="#">My Social Media Links</a></p>
+  </footer>
+</body>
+</html>

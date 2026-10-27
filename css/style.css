@@ -1,0 +1,20 @@
+/* MyVideoPlayer styles.
+   M1: skeleton only. The layout from cursor-demo.jpg is built in M2. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  background: #b9d3e0 url("../images/background.jpg") center / cover no-repeat fixed;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}

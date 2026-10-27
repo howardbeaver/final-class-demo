@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Local reference only: the design mockup
+cursor-demo.jpg
+
+# Sample media the site doesn't use
+video/sample-*
+posters/sample-*
+
+# Local dev tool config
+.claude/
