@@ -11,9 +11,30 @@ Plain HTML, CSS and JavaScript, with no framework and no build step.
 index.html      the page
 css/style.css   styles
 js/main.js      player behaviour
+dev-server.py   local server with Range support (development only)
 images/         background.jpg
 video/          sue-vid1.mp4, sue-vid2.mp4, sue-vid3.mp4
 posters/        sue-vid*-thumb.png (thumbnails), sue-vid*-frame.jpg (starting frames)
+```
+
+## Run locally
+
+```bash
+python3 dev-server.py
+```
+
+Then open http://localhost:8000. Use this server rather than
+`python3 -m http.server`: Safari only plays video from a server that answers
+Range requests, and this one does. It also tells the browser to recheck files
+on every reload, so edits show up straight away.
+
+## Videos
+
+Keep new videos as H.264 MP4 with the index at the start ("fast start"), so
+playback can begin before the whole file downloads:
+
+```bash
+ffmpeg -i input.mp4 -c copy -movflags +faststart output.mp4
 ```
 
 ## Milestones
