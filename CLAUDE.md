@@ -1,6 +1,9 @@
 # MyVideoPlayer
 
-A one-page portfolio of the user's video work, built from the mockup `cursor-demo.jpg`. A large hero `<video>` sits above a strip of three thumbnails, and clicking a thumbnail plays that video in the hero. It's plain HTML, CSS and JavaScript, with no framework, no build step and no npm. It's developed locally and will be hosted on Vercel from the user's git repo.
+A one-page portfolio of the user's video work, built from the mockup `cursor-demo.jpg`. A large hero `<video>` sits above a strip of three thumbnails, and clicking a thumbnail plays that video in the hero. It's plain HTML, CSS and JavaScript, with no framework, no build step and no npm. It's developed locally and hosted on Vercel.
+
+- Live: https://final-class-demo.vercel.app
+- Repo: https://github.com/howardbeaver/final-class-demo (public; every push to `main` redeploys on Vercel)
 
 This is a fresh project. Don't reuse code, assets or decisions from the user's older video-player projects. Use only the assets the user points to.
 
@@ -81,11 +84,10 @@ Each milestone ends with a commit whose message starts with its ID.
 - [x] **M3 Player:** thumbnail click plays in the hero, highlight, keyboard, live region, muted autoplay
 - [x] **M4 Responsive:** tablet and phone layouts, hamburger menu; strip set to hero width with centred thumbnails
 - [x] **M5 Local testing:** `dev-server.py` with Range support; checked in Chromium (play, switch, seek) and Safari (range requests seen in the server log)
-- [ ] **M6 Deploy:**
-  - The user creates the GitHub repo. Add the remote and push `main`.
-  - Connect Vercel as a static site (Framework Preset: Other, no build command).
-  - Keep dev-only files off the live site with a `.vercelignore`: `dev-server.py`, `CLAUDE.md`, `README.md`.
-  - Check the live URL.
+- [x] **M6 Deploy:** pushed to GitHub and connected to Vercel as a static site (Framework Preset: Other, no build command).
+  - `.vercelignore` keeps `dev-server.py`, `CLAUDE.md` and `README.md` off the live site (they return 404).
+  - Vercel answers Range requests (206).
+  - The live site was checked at 1200x800 and 375px: layout, playback, switching, menu.
 
 **Still to verify:**
 - A visual check of playback in Safari.

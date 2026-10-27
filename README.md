@@ -5,6 +5,8 @@ thumbnails, and clicking a thumbnail plays that video in the hero.
 
 Plain HTML, CSS and JavaScript, with no framework and no build step.
 
+Live at https://final-class-demo.vercel.app. Every push to `main` redeploys on Vercel.
+
 ## Files
 
 ```
